@@ -6,10 +6,10 @@ export const site = {
   whatsapp: { number: "5511964563628", display: "(11) 96456-3628" },
   description:
     "Desenvolvimento de software sob medida: sistemas web, aplicativos e automações para organizar sua operação e transformar ideias em produtos digitais.",
-  // Deixado preparado para quando a razão social for formalizada.
+  // Razão social pode ser preenchida quando o nome oficial for informado.
   legal: {
     razaoSocial: null as string | null,
-    cnpj: null as string | null,
+    cnpj: "56.186.861/0001-60",
   },
 };
 
