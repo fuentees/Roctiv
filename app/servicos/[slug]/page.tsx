@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowUpRight, Check } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 import Container from "@/components/ui/Container";
+import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import MonoLabel from "@/components/ui/MonoLabel";
 import StructuredData from "@/components/ui/StructuredData";
 import ContactSection from "@/components/sections/ContactSection";
@@ -27,7 +28,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   return <>
     <StructuredData data={{ "@context": "https://schema.org", "@type": "Service", name: service.title, description: service.description, url: site.url + "/servicos/" + slug, provider: { "@type": "Organization", "@id": site.url + "/#organization", name: site.name, url: site.url } }} />
     <Container className="pt-32 pb-16 sm:pt-40 sm:pb-24">
-      <Link href="/servicos" className="mb-10 inline-flex items-center gap-2 text-sm text-fg-muted hover:text-accent"><ArrowLeft size={15} aria-hidden="true" />Todos os serviços</Link>
+      <Breadcrumbs items={[{ label: "Início", href: "/" }, { label: "Serviços", href: "/servicos" }, { label: service.name, href: "/servicos/" + slug }]} />
       <MonoLabel className="mb-5 block">Software para sua necessidade</MonoLabel>
       <h1 className="max-w-3xl text-4xl font-medium tracking-tight text-balance sm:text-5xl">{service.title}</h1>
       <p className="mt-6 max-w-2xl text-lg leading-relaxed text-fg-muted">{service.intro}</p>

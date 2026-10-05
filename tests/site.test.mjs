@@ -39,10 +39,25 @@ test("Produtos têm um próximo passo de contato", async () => {
   for (const route of routes.filter(route => route.startsWith("/servicos/"))) {
     const html = await readFile(builtPath(route), "utf8");
     assert.match(html, /Conversar sobre este serviço/);
-    const payload = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
-    assert.ok(payload, "Dados estruturados ausentes em " + route);
-    const data = JSON.parse(payload[1]);
-    assert.equal(data["@type"], "Service");
+    const payloads = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(match => JSON.parse(match[1]));
+    const data = payloads.find(item => item["@type"] === "Service");
+    assert.ok(data, "Dados do serviço ausentes em " + route);
     assert.equal(data.url, "https://roctiv.com.br" + route);
+  }
+});
+
+ test("Sitemap contém todas as páginas canônicas", async () => {
+  const xml = await readFile(".next/server/app/sitemap.xml.body", "utf8");
+  for (const route of routes) assert.ok(xml.includes("<loc>https://roctiv.com.br" + (route === "/" ? "" : route) + "</loc>"), "Página ausente do sitemap: " + route);
+});
+
+test("Navegação estruturada identifica a página atual", async () => {
+  for (const route of routes.filter(route => /\/(servicos|produtos)\//.test(route))) {
+    const html = await readFile(builtPath(route), "utf8");
+    const payloads = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(match => JSON.parse(match[1]));
+    const breadcrumb = payloads.find(item => item["@type"] === "BreadcrumbList");
+    assert.ok(breadcrumb, "Breadcrumb ausente em " + route);
+    assert.equal(breadcrumb.itemListElement.at(-1).item, "https://roctiv.com.br" + route);
+    assert.match(html, /aria-current="page"/);
   }
 });

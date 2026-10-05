@@ -11,9 +11,9 @@ export default function Hero() {
       <div aria-hidden="true" className="pointer-events-none absolute -top-40 right-0 h-[600px] w-[600px] rounded-full bg-accent/[0.06] blur-[100px]" />
       <Container className="relative grid items-center gap-12 lg:grid-cols-[1.05fr_1fr] lg:gap-12">
         <div>
-          <MonoLabel className="mb-6 block">Desenvolvimento de software sob medida</MonoLabel>
+          <MonoLabel className="mb-6 block">Sistemas web · Aplicativos · Automações</MonoLabel>
           <h1 className="max-w-2xl text-[2.65rem] leading-[1.08] font-medium tracking-tight text-balance sm:text-6xl lg:text-[3.8rem]">
-            Sua operação merece <span className="text-accent">mais que improviso.</span>
+            Software sob medida para <span className="text-accent">seu negócio avançar.</span>
           </h1>
           <p className="mt-6 max-w-lg text-base leading-relaxed text-fg-muted sm:text-lg">
             Transformamos processos espalhados e ideias de negócio em sistemas web, aplicativos e automações feitos para a sua necessidade.

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import StructuredData from "@/components/ui/StructuredData";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import NoiseOverlay from "@/components/layout/NoiseOverlay";
@@ -75,6 +76,13 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <a href="#conteudo" className="skip-link">Pular para o conteúdo</a>
+        <StructuredData data={{
+          "@context": "https://schema.org",
+          "@graph": [
+            { "@type": "Organization", "@id": site.url + "/#organization", name: site.name, url: site.url, email: site.email, telephone: "+" + site.whatsapp.number, taxID: site.legal.cnpj, description: site.description },
+            { "@type": "WebSite", "@id": site.url + "/#website", name: site.name, url: site.url, inLanguage: "pt-BR", publisher: { "@id": site.url + "/#organization" } },
+          ],
+        }} />
         <NoiseOverlay />
         <Header />
         <main id="conteudo" tabIndex={-1} className="flex-1">{children}</main>

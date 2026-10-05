@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/metadata";
 import ContactSection from "@/components/sections/ContactSection";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import Container from "@/components/ui/Container";
+import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import MonoLabel from "@/components/ui/MonoLabel";
 import ProjectPlaceholder from "@/components/projects/ProjectPlaceholder";
 import { getProjectBySlug, projects } from "@/data/projects";
@@ -45,13 +45,7 @@ export default async function ProjectPage({
   return (
     <div className="pt-32 pb-16 sm:pt-40 sm:pb-20">
       <Container>
-        <Link
-          href="/produtos"
-          className="mb-12 inline-flex items-center gap-1.5 text-sm text-fg-subtle transition-colors hover:text-fg"
-        >
-          <ArrowLeft size={14} />
-          Todos os produtos
-        </Link>
+        <Breadcrumbs items={[{ label: "Início", href: "/" }, { label: "Projetos", href: "/produtos" }, { label: project.name, href: "/produtos/" + slug }]} />
 
         <header className="max-w-2xl">
           <div className="mb-5 flex flex-wrap items-center gap-3">
