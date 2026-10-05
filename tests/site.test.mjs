@@ -2,7 +2,7 @@ import { readFile, access } from "node:fs/promises";
 import assert from "node:assert/strict";
 import test from "node:test";
 
-const routes = ["/", "/sobre", "/contato", "/produtos", "/produtos/vilagi", "/produtos/teco", "/produtos/compreinapromo"];
+const routes = ["/servicos", "/servicos/sistemas-web", "/servicos/aplicativos", "/servicos/automacoes-e-integracoes", "/", "/sobre", "/contato", "/produtos", "/produtos/vilagi", "/produtos/teco", "/produtos/compreinapromo"];
 const builtPath = route => ".next/server/app/" + (route === "/" ? "index" : route.slice(1)) + ".html";
 for (const route of routes) {
   test("HTML de produção: " + route, async () => {
@@ -31,6 +31,18 @@ test("Produtos têm um próximo passo de contato", async () => {
   for (const route of routes.filter(route => route.startsWith("/produtos/"))) {
     const html = await readFile(builtPath(route), "utf8");
     assert.match(html, /Solicitar demonstração/);
-    assert.match(html, /mailto:contato@roctiv.com.br\?subject=/);
+    assert.match(html, /https:\/\/wa.me\/5511964563628\?text=/);
+  }
+});
+
+ test("Serviços apresentam contato comercial e dados estruturados válidos", async () => {
+  for (const route of routes.filter(route => route.startsWith("/servicos/"))) {
+    const html = await readFile(builtPath(route), "utf8");
+    assert.match(html, /Conversar sobre este serviço/);
+    const payload = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+    assert.ok(payload, "Dados estruturados ausentes em " + route);
+    const data = JSON.parse(payload[1]);
+    assert.equal(data["@type"], "Service");
+    assert.equal(data.url, "https://roctiv.com.br" + route);
   }
 });

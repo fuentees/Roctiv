@@ -2,47 +2,11 @@ import Link from "next/link";
 import Logo from "./Logo";
 import Container from "@/components/ui/Container";
 import { footerLinks, site } from "@/data/site";
+import { whatsappUrl } from "@/lib/contact";
 
 export default function Footer() {
-  const year = new Date().getFullYear();
-
-  return (
-    <footer className="border-t border-border">
-      <Container className="flex flex-col items-center gap-8 py-20 text-center sm:py-24">
-        <Logo className="text-lg" />
-
-        <nav aria-label="Navegação do rodapé" className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
-          {footerLinks.map((link, index) => (
-            <span key={link.href} className="flex items-center gap-3">
-              {index > 0 && (
-                <span className="font-mono text-sm text-accent">/</span>
-              )}
-              <Link
-                href={link.href}
-                className="text-sm text-fg-muted transition-colors hover:text-fg"
-              >
-                {link.label}
-              </Link>
-            </span>
-          ))}
-        </nav>
-
-        <a
-          href={`mailto:${site.email}`}
-          className="font-mono text-sm text-fg-muted transition-colors hover:text-accent"
-        >
-          {site.email}
-        </a>
-
-        <span className="font-mono text-xs text-fg-subtle">
-          © {year} {site.name}
-        </span>
-      </Container>
-      {/*
-        Espaço reservado para quando a razão social for formalizada:
-        Razão social, CNPJ, link para /privacidade e /termos.
-        Ver data/site.ts (site.legal) para preencher esses dados.
-      */}
-    </footer>
-  );
+  return <footer className="border-t border-border"><Container className="py-12 sm:py-16"><div className="grid gap-8 sm:grid-cols-[1fr_auto]">
+    <div><Logo /><p className="mt-4 max-w-sm text-sm leading-relaxed text-fg-muted">Software sob medida. Sistemas web, aplicativos e automações para o seu negócio.</p></div>
+    <div><nav aria-label="Navegação do rodapé" className="flex flex-wrap gap-x-5 gap-y-3">{footerLinks.map(link => <Link key={link.href} href={link.href} className="text-sm text-fg-muted hover:text-accent">{link.label}</Link>)}</nav><a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" className="mt-5 block text-sm text-accent">WhatsApp · {site.whatsapp.display}</a><a href={"mailto:" + site.email} className="mt-3 block text-sm text-fg-muted hover:text-accent">{site.email}</a></div>
+  </div><div className="mt-10 flex flex-wrap justify-between gap-3 border-t border-border pt-6 text-xs text-fg-subtle"><span>© {new Date().getFullYear()} {site.name}</span><span>Do problema à operação.</span></div></Container></footer>;
 }

@@ -19,13 +19,16 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — Produtos digitais e tecnologia`,
+    default: `${site.name} — Software sob medida`,
     template: `%s — ${site.name}`,
   },
   description: site.description,
   keywords: [
     "ROCTIV",
-    "produtos digitais",
+    "software sob medida",
+    "desenvolvimento de sistemas web",
+    "desenvolvimento de aplicativos",
+    "automação de processos",
     "desenvolvimento de software",
     "plataformas",
     "aplicativos",
@@ -38,12 +41,12 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     url: site.url,
     siteName: site.name,
-    title: `${site.name} — Produtos digitais e tecnologia`,
+    title: `${site.name} — Software sob medida`,
     description: site.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — Produtos digitais e tecnologia`,
+    title: `${site.name} — Software sob medida`,
     description: site.description,
   },
   robots: {

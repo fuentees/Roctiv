@@ -28,7 +28,7 @@ function StatusBadge({ status }: { status: Project["status"] }) {
 function Meta({ project }: { project: Project }) {
   return (
     <>
-      <div className="mb-4 flex items-center gap-3">
+      <div className="mb-4 flex flex-wrap items-center gap-3">
         <span className="font-mono text-xs tracking-widest text-fg-subtle uppercase">
           {project.category}
         </span>
@@ -38,7 +38,7 @@ function Meta({ project }: { project: Project }) {
       <div className="flex items-center gap-3">
         {project.logo && (
           <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-xl border border-border bg-bg-elevated-2">
-            <Image src={project.logo} alt="" fill className="object-contain p-1.5" />
+            <Image src={project.logo} alt="" fill sizes="40px" className="object-contain p-1.5" />
           </span>
         )}
         <h3 className="text-2xl font-medium text-fg sm:text-3xl">{project.name}</h3>

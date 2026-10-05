@@ -54,7 +54,7 @@ export default async function ProjectPage({
         </Link>
 
         <header className="max-w-2xl">
-          <div className="mb-5 flex items-center gap-3">
+          <div className="mb-5 flex flex-wrap items-center gap-3">
             <MonoLabel>{project.category}</MonoLabel>
             <span
               className={cn(
@@ -67,18 +67,19 @@ export default async function ProjectPage({
               {project.status}
             </span>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
             {project.logo && (
               <span className="relative h-14 w-14 shrink-0 overflow-hidden rounded-2xl border border-border bg-bg-elevated-2">
                 <Image
                   src={project.logo}
                   alt=""
                   fill
+                  sizes="56px"
                   className="object-contain p-2"
                 />
               </span>
             )}
-            <h1 className="text-4xl font-medium text-fg sm:text-5xl">
+            <h1 className="max-w-full break-words text-3xl font-medium text-fg sm:text-5xl">
               {project.name}
             </h1>
           </div>
@@ -99,6 +100,7 @@ export default async function ProjectPage({
           )}
         </header>
 
+        <p className="mt-6 text-sm text-fg-muted">Produto próprio da ROCTIV · {project.status}</p>
         <div className="mt-14 sm:mt-16">
           {project.images.length > 0 ? (
             <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-border bg-bg-elevated">
@@ -106,7 +108,7 @@ export default async function ProjectPage({
                 src={project.images[0]}
                 alt={`Interface principal do ${project.name}`}
                 fill
-                priority
+                preload
                 className="object-contain p-6"
                 sizes="100vw"
               />

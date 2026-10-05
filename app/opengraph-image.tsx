@@ -87,7 +87,7 @@ export default function OpengraphImage() {
             fontWeight: 500,
           }}
         >
-          Software pensado para funcionar no mundo real.
+          Software sob medida para o seu negócio.
         </div>
         <div
           style={{

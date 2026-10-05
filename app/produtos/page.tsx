@@ -4,7 +4,7 @@ import MonoLabel from "@/components/ui/MonoLabel";
 import ProjectShowcase from "@/components/projects/ProjectShowcase";
 import { projects } from "@/data/projects";
 
-export const metadata = pageMetadata("Produtos", "Conheça Vilagi, TECO e CompreiNaPromo: os produtos digitais desenvolvidos pela ROCTIV.", "/produtos");
+export const metadata = pageMetadata("Portfólio de sistemas e aplicativos", "Conheça Vilagi, TECO e CompreiNaPromo: os produtos digitais desenvolvidos pela ROCTIV.", "/produtos");
 
 export default function ProdutosPage() {
   const count = String(projects.length).padStart(2, "0");
@@ -17,10 +17,10 @@ export default function ProdutosPage() {
             Produtos <span className="text-accent">/</span> {count}
           </MonoLabel>
           <h1 className="text-4xl font-medium text-fg sm:text-5xl">
-            O que construímos
+            Projetos que mostram nossa experiência.
           </h1>
           <p className="mt-5 text-base leading-relaxed text-fg-muted sm:text-lg">
-            Produtos próprios desenvolvidos e mantidos pela ROCTIV.
+            Produtos próprios em operação ou desenvolvimento. Veja as interfaces, os recursos e as decisões por trás de cada solução.
           </p>
         </header>
 

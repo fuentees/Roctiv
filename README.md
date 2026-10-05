@@ -1,33 +1,30 @@
-# ROCTIV — site institucional
+# ROCTIV — software sob medida
 
-Next.js (App Router) + TypeScript + Tailwind CSS v4 + Framer Motion + lucide-react.
+Site comercial em Next.js (App Router), TypeScript e Tailwind CSS v4.
 
-## Rodando localmente
+## Desenvolvimento e validação
 
-```bash
-npm install
-npm run dev
-```
+- `npm install` instala as dependências.
+- `npm run dev` abre o ambiente local em http://localhost:3000.
+- `npm run check` executa lint, build de produção e testes do HTML gerado.
+- `npm start` serve a compilação de produção.
 
-Abra [http://localhost:3000](http://localhost:3000).
+## Conteúdo
 
-## Onde editar o quê
+- `data/site.ts`: marca, domínio, e-mail, WhatsApp e navegação.
+- `data/services.ts`: serviços, processo de contratação e perguntas frequentes. Os serviços geram páginas em /servicos/[slug].
+- `data/projects.ts`: produtos próprios do portfólio e páginas em /produtos/[slug].
+- `public/projects/`: logos e telas reais dos produtos.
+- `lib/metadata.ts`: metadados e endereço canônico de cada página.
 
-- **Produtos** — `data/projects.ts`. Cada objeto vira uma página em `/produtos/[slug]` automaticamente (via `generateStaticParams`). O nome de um produto é só o campo `name` desse arquivo — trocar ali já atualiza o site inteiro.
-- **Screenshots reais** — coloque as imagens em `public/projects/<slug>/` e adicione os caminhos no array `images` do produto correspondente em `data/projects.ts`. Enquanto `images` estiver vazio, o site usa um placeholder neutro (`components/projects/ProjectPlaceholder.tsx`).
-- **Stack / expertise** — `data/expertise.ts` (áreas de atuação e o mapeamento "tecnologia → usada em qual produto", usado no tooltip de hover da seção Expertise).
-- **Princípios** — `data/principles.ts`.
-- **Dados da marca** (nome, domínio, e-mail, links de navegação) — `data/site.ts`. `site.legal` está reservado para quando a razão social e o CNPJ forem formalizados; hoje fica `null` e não aparece em lugar nenhum publicamente.
-- **ROCTIV Labs** — a seção existe (`components/sections/LabsSection.tsx`) mas fica desativada por `labsEnabled` em `data/site.ts` até haver experimentos reais para mostrar.
+O formulário prepara a mensagem localmente e abre o WhatsApp para o visitante revisar e enviar. Não há envio automático, armazenamento de contatos nem backend de e-mail. Com JavaScript desativado, os links diretos de WhatsApp e e-mail continuam disponíveis.
 
-## SEO
+## Publicação
 
-Sitemap, robots.txt, manifest e a imagem de Open Graph são gerados dinamicamente (`app/sitemap.ts`, `app/robots.ts`, `app/manifest.ts`, `app/opengraph-image.tsx`) a partir dos mesmos dados de `data/`. Não precisam de manutenção manual ao adicionar produtos.
+Na Vercel, importe o repositório com preset Next.js e mantenha os comandos padrão. Não são necessárias variáveis de ambiente. Use o domínio definido em data/site.ts e siga os registros DNS exibidos pela Vercel.
 
-## Validação antes de publicar
+Depois da publicação, valide a propriedade do domínio no Google Search Console e envie https://roctiv.com.br/sitemap.xml. Confira as páginas indexadas e acompanhe buscas e cliques. A configuração técnica facilita o rastreamento; posicionamento também depende de conteúdo útil, referências externas e concorrência.
 
-Execute `npm run check` para verificar lint, compilar para produção e testar o HTML gerado (SEO, conteúdo acessível sem JavaScript e navegação interna). A mesma validação roda no GitHub Actions.
+Fontes: https://developers.google.com/search/docs/fundamentals/seo-starter-guide e https://vercel.com/docs/domains/set-up-custom-domain.
 
-Os metadados das páginas internas ficam em `lib/metadata.ts`. O contato abre o aplicativo de e-mail com o assunto preenchido; não há formulário nem serviço de envio configurado.
-
-Informações de equipe, depoimentos, resultados e dados legais devem ser adicionados apenas quando houver dados reais aprovados.
+Nome profissional, biografia, fotos, depoimentos, resultados e informações legais devem ser publicados apenas com dados reais aprovados. Os projetos do portfólio são produtos próprios; o status de desenvolvimento é preservado.

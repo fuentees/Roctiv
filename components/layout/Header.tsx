@@ -82,7 +82,7 @@ export default function Header() {
             <Logo />
           </Link>
 
-          <nav aria-label="Navegação principal" className="hidden items-center gap-8 md:flex">
+          <nav aria-label="Navegação principal" className="hidden items-center gap-5 md:flex">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -98,9 +98,9 @@ export default function Header() {
           <div className="hidden md:block">
             <Link
               href="/contato"
-              className="inline-flex items-center rounded-full border border-border-strong px-4 py-2 text-sm text-fg transition-colors hover:border-accent hover:text-accent"
+              className="inline-flex items-center rounded-full bg-accent px-4 py-2 text-sm font-medium text-accent-fg transition-colors hover:bg-fg"
             >
-              Fale conosco
+              Vamos conversar
             </Link>
           </div>
 
@@ -138,7 +138,7 @@ export default function Header() {
               onClick={() => setOpen(false)}
               className="inline-flex w-fit items-center rounded-full border border-border-strong px-5 py-3 text-sm text-fg transition-colors hover:border-accent hover:text-accent"
             >
-              Fale conosco
+              Vamos conversar
             </Link>
           </Container>
         </div>
