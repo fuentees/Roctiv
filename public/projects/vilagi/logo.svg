@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="VILAGI">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0ea5e9" />
+      <stop offset="100%" stop-color="#22c55e" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="96" fill="url(#bg)" />
+  <circle cx="256" cy="256" r="150" fill="none" stroke="#ffffff" stroke-width="24" opacity="0.9" />
+  <path d="M170 175 L256 360 L342 175" stroke="#ffffff" stroke-width="56" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+</svg>

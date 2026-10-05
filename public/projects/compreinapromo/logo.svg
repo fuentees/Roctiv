@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Símbolo CompreiNaPromo</title>
+  <path d="M16 21.5h36a4 4 0 0 1 4 4V53a5 5 0 0 1-5 5H17a5 5 0 0 1-5-5V25.5a4 4 0 0 1 4-4Z" fill="#0B6CFB"/>
+  <path d="M23 23v-4.5a9 9 0 0 1 18 0V23" fill="none" stroke="#0B1F3A" stroke-linecap="round" stroke-width="4"/>
+  <path d="M6 31h7M4 38h9M8 45h5" stroke="#0B6CFB" stroke-linecap="round" stroke-width="3.5"/>
+  <text x="19" y="47" fill="#fff" font-family="Arial,sans-serif" font-size="20" font-weight="800">CP</text>
+  <path d="m44 27 11 3.5 4 12.7L49.7 53 39 46.2l1-14.3Z" fill="#2DBE20" stroke="#fff" stroke-width="1.5"/>
+  <circle cx="45.5" cy="34" r="1.8" fill="#fff"/>
+  <text x="43" y="47" fill="#fff" font-family="Arial,sans-serif" font-size="12" font-weight="800">%</text>
+</svg>

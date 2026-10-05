@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ROCTIV — site institucional
 
-## Getting Started
+Next.js (App Router) + TypeScript + Tailwind CSS v4 + Framer Motion + lucide-react.
 
-First, run the development server:
+## Rodando localmente
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Onde editar o quê
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Produtos** — `data/projects.ts`. Cada objeto vira uma página em `/produtos/[slug]` automaticamente (via `generateStaticParams`). O nome de um produto é só o campo `name` desse arquivo — trocar ali já atualiza o site inteiro.
+- **Screenshots reais** — coloque as imagens em `public/projects/<slug>/` e adicione os caminhos no array `images` do produto correspondente em `data/projects.ts`. Enquanto `images` estiver vazio, o site usa um placeholder neutro (`components/projects/ProjectPlaceholder.tsx`).
+- **Stack / expertise** — `data/expertise.ts` (áreas de atuação e o mapeamento "tecnologia → usada em qual produto", usado no tooltip de hover da seção Expertise).
+- **Princípios** — `data/principles.ts`.
+- **Dados da marca** (nome, domínio, e-mail, links de navegação) — `data/site.ts`. `site.legal` está reservado para quando a razão social e o CNPJ forem formalizados; hoje fica `null` e não aparece em lugar nenhum publicamente.
+- **ROCTIV Labs** — a seção existe (`components/sections/LabsSection.tsx`) mas fica desativada por `labsEnabled` em `data/site.ts` até haver experimentos reais para mostrar.
 
-## Learn More
+## SEO
 
-To learn more about Next.js, take a look at the following resources:
+Sitemap, robots.txt, manifest e a imagem de Open Graph são gerados dinamicamente (`app/sitemap.ts`, `app/robots.ts`, `app/manifest.ts`, `app/opengraph-image.tsx`) a partir dos mesmos dados de `data/`. Não precisam de manutenção manual ao adicionar produtos.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Validação antes de publicar
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Execute `npm run check` para verificar lint, compilar para produção e testar o HTML gerado (SEO, conteúdo acessível sem JavaScript e navegação interna). A mesma validação roda no GitHub Actions.
 
-## Deploy on Vercel
+Os metadados das páginas internas ficam em `lib/metadata.ts`. O contato abre o aplicativo de e-mail com o assunto preenchido; não há formulário nem serviço de envio configurado.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Informações de equipe, depoimentos, resultados e dados legais devem ser adicionados apenas quando houver dados reais aprovados.
