@@ -1,7 +1,7 @@
 export const site = {
   name: "ROCTIV",
   domain: "roctiv.com.br",
-  url: "https://roctiv.com.br",
+  url: "https://www.roctiv.com.br",
   email: "contato@roctiv.com.br",
   whatsapp: { number: "5511964563628", display: "(11) 96456-3628" },
   description:

@@ -8,13 +8,13 @@ for (const route of routes) {
   test("HTML de produção: " + route, async () => {
     const html = await readFile(builtPath(route), "utf8");
     const canonical = html.match(/<link rel="canonical" href="([^"]+)"/);
-    assert.equal(canonical?.[1], route === "/" ? "https://roctiv.com.br" : "https://roctiv.com.br" + route);
+    assert.equal(canonical?.[1], route === "/" ? "https://www.roctiv.com.br" : "https://www.roctiv.com.br" + route);
     assert.equal((html.match(/<h1(?: |>|\n)/g) ?? []).length, 1);
     assert.match(html, /<html[^>]*lang="pt-BR"/);
     assert.match(html, /id="conteudo"/);
     assert.doesNotMatch(html, /opacity:0;transform:translateY\(16px\)/);
     assert.match(html, /<meta property="og:title" content="[^"]+"/);
-    if (route !== "/") assert.match(html, new RegExp('<meta property="og:url" content="https://roctiv.com.br' + route + '"'));
+    if (route !== "/") assert.match(html, new RegExp('<meta property="og:url" content="https://www.roctiv.com.br' + route + '"'));
     for (const [, href] of html.matchAll(/<a[^>]*href="([^"#]+)"/g)) {
       if (href.startsWith("/") && !href.startsWith("//")) {
         const path = href.split(/[?#]/)[0];
@@ -42,13 +42,13 @@ test("Produtos têm um próximo passo de contato", async () => {
     const payloads = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(match => JSON.parse(match[1]));
     const data = payloads.find(item => item["@type"] === "Service");
     assert.ok(data, "Dados do serviço ausentes em " + route);
-    assert.equal(data.url, "https://roctiv.com.br" + route);
+    assert.equal(data.url, "https://www.roctiv.com.br" + route);
   }
 });
 
  test("Sitemap contém todas as páginas canônicas", async () => {
   const xml = await readFile(".next/server/app/sitemap.xml.body", "utf8");
-  for (const route of routes) assert.ok(xml.includes("<loc>https://roctiv.com.br" + (route === "/" ? "" : route) + "</loc>"), "Página ausente do sitemap: " + route);
+  for (const route of routes) assert.ok(xml.includes("<loc>https://www.roctiv.com.br" + (route === "/" ? "" : route) + "</loc>"), "Página ausente do sitemap: " + route);
 });
 
 test("Navegação estruturada identifica a página atual", async () => {
@@ -57,7 +57,7 @@ test("Navegação estruturada identifica a página atual", async () => {
     const payloads = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(match => JSON.parse(match[1]));
     const breadcrumb = payloads.find(item => item["@type"] === "BreadcrumbList");
     assert.ok(breadcrumb, "Breadcrumb ausente em " + route);
-    assert.equal(breadcrumb.itemListElement.at(-1).item, "https://roctiv.com.br" + route);
+    assert.equal(breadcrumb.itemListElement.at(-1).item, "https://www.roctiv.com.br" + route);
     assert.match(html, /aria-current="page"/);
   }
 });

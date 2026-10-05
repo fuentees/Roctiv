@@ -23,7 +23,7 @@ O formulário prepara a mensagem localmente e abre o WhatsApp para o visitante r
 
 Na Vercel, importe o repositório com preset Next.js e mantenha os comandos padrão. Não são necessárias variáveis de ambiente. Use o domínio definido em data/site.ts e siga os registros DNS exibidos pela Vercel.
 
-Depois da publicação, valide a propriedade do domínio no Google Search Console e envie https://roctiv.com.br/sitemap.xml. Confira as páginas indexadas e acompanhe buscas e cliques. A configuração técnica facilita o rastreamento; posicionamento também depende de conteúdo útil, referências externas e concorrência.
+Depois da publicação, valide a propriedade do domínio no Google Search Console e envie https://www.roctiv.com.br/sitemap.xml. Confira as páginas indexadas e acompanhe buscas e cliques. A configuração técnica facilita o rastreamento; posicionamento também depende de conteúdo útil, referências externas e concorrência.
 
 Fontes: https://developers.google.com/search/docs/fundamentals/seo-starter-guide e https://vercel.com/docs/domains/set-up-custom-domain.
 

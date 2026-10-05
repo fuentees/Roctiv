@@ -13,7 +13,7 @@ O projeto usa os comandos padrão do Next.js e não depende de variáveis de amb
 
 Em Settings → Domains, adicione roctiv.com.br e www.roctiv.com.br.
 
-Use roctiv.com.br como endereço principal. Configure www.roctiv.com.br para redirecionar ao domínio sem www, pois os endereços canônicos do site usam https://roctiv.com.br.
+Use www.roctiv.com.br como endereço principal, conforme a configuração publicada. Configure roctiv.com.br para redirecionar ao domínio com www. Os endereços canônicos, dados estruturados e sitemap usam https://www.roctiv.com.br.
 
 Copie os valores DNS exibidos pela Vercel para este projeto. O endereço IP e o destino CNAME devem vir do painel, não de um exemplo antigo.
 
@@ -43,15 +43,15 @@ Volte à Vercel e aguarde Valid Configuration. Confira https://roctiv.com.br e h
 3. Copie a entrada TXT de verificação gerada pelo Google.
 4. No Registro.br, adicione uma nova entrada TXT na raiz, com o valor google-site-verification fornecido. Preserve as outras entradas TXT.
 5. Salve e volte ao Google para verificar a propriedade.
-6. Em Sitemaps, envie https://roctiv.com.br/sitemap.xml.
+6. Em Sitemaps, envie https://www.roctiv.com.br/sitemap.xml.
 7. Use Inspeção de URL para conferir a homepage e as páginas de serviços. Se estiverem acessíveis ao Google e ainda não indexadas, solicite indexação.
 
 Páginas prioritárias:
 
-- https://roctiv.com.br/
-- https://roctiv.com.br/servicos/sistemas-web
-- https://roctiv.com.br/servicos/aplicativos
-- https://roctiv.com.br/servicos/automacoes-e-integracoes
+- https://www.roctiv.com.br/
+- https://www.roctiv.com.br/servicos/sistemas-web
+- https://www.roctiv.com.br/servicos/aplicativos
+- https://www.roctiv.com.br/servicos/automacoes-e-integracoes
 
 ## 5. Acompanhar a presença nas buscas
 
