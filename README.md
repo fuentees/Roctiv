@@ -23,7 +23,9 @@ O formulário prepara a mensagem localmente e abre o WhatsApp para o visitante r
 
 Na Vercel, importe o repositório com preset Next.js e mantenha os comandos padrão. Não são necessárias variáveis de ambiente. Use o domínio definido em data/site.ts e siga os registros DNS exibidos pela Vercel.
 
-Depois da publicação, valide a propriedade do domínio no Google Search Console e envie https://roctiv.com.br/sitemap.xml. Confira as páginas indexadas e acompanhe buscas e cliques. A configuração técnica facilita o rastreamento; posicionamento também depende de conteúdo útil, referências externas e concorrência.
+O endereço canônico é https://www.roctiv.com.br, que corresponde ao destino do redirecionamento público na Vercel. Mantenha o redirecionamento permanente de roctiv.com.br para www.roctiv.com.br; os metadados, dados estruturados, robots.txt e sitemap usam o mesmo endereço.
+
+Depois da publicação, valide a propriedade do domínio no Google Search Console e envie https://www.roctiv.com.br/sitemap.xml. Se ele já estiver cadastrado e processado, não é necessário duplicar o envio. Use a Inspeção de URL para verificar https://www.roctiv.com.br/ e solicitar indexação depois de publicar alterações relevantes. Confira as páginas indexadas e acompanhe buscas e cliques. A configuração técnica facilita o rastreamento; posicionamento também depende de conteúdo útil, referências externas e concorrência. A indexação e as posições nas pesquisas não são garantidas.
 
 Fontes: https://developers.google.com/search/docs/fundamentals/seo-starter-guide e https://vercel.com/docs/domains/set-up-custom-domain.
 

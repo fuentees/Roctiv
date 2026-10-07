@@ -12,6 +12,7 @@ export const metadata = pageMetadata("Desenvolvimento de software sob medida", s
 export default function Home() {
   return <>
     <StructuredData data={{ "@context": "https://schema.org", "@type": "Organization", "@id": site.url + "/#organization", name: site.name, url: site.url, email: site.email, telephone: "+" + site.whatsapp.number, description: site.description }} />
+    <StructuredData data={{ "@context": "https://schema.org", "@type": "WebSite", "@id": site.url + "/#website", name: site.name, alternateName: site.domain, url: site.url, inLanguage: "pt-BR", publisher: { "@id": site.url + "/#organization" } }} />
     <Hero /><ServicesSection /><PortfolioSection /><ProcessSection /><FaqSection /><ContactSection />
   </>;
 }
